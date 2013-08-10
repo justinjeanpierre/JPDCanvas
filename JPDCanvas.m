@@ -105,7 +105,7 @@
     [imageData writeToFile:filePath atomically:YES];
 }
 
--(void)saveAsPNGWithName:(NSString *)name atPath:(NSString *)Path {
+-(void)saveAsPNGWithName:(NSString *)fileName atPath:(NSString *)Path {
     UIGraphicsBeginImageContext(self.bounds.size);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
@@ -113,7 +113,7 @@
 
     NSString *slashDocuments = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *slashUser = [slashDocuments stringByAppendingPathComponent:[[NSUserDefaults standardUserDefaults] objectForKey:@"LoggedInUser"]];
-    NSString *filePath = [slashUser stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", name]];
+    NSString *filePath = [slashUser stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", fileName]];
     NSData *imageData = UIImagePNGRepresentation(img);
     [imageData writeToFile:filePath atomically:YES];
 }
